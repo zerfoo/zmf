@@ -7,7 +7,7 @@ all: generate
 # generate: Generates Go code from the protobuf definition.
 generate:
 	@echo ">> generating protobuf"
-	@protoc --go_out=. --go_opt=module=github.com/zerfoo/zmf format/zerfoo.proto
+	@protoc --go_out=. --go_opt=module=github.com/zerfoo/zmf zerfoo.proto
 
 # test: Runs the tests.
 test:
