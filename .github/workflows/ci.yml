@@ -19,7 +19,7 @@ jobs:
         curl -LO https://github.com/protocolbuffers/protobuf/releases/download/v32.0/protoc-32.0-linux-x86_64.zip
         sudo unzip -o protoc-32.0-linux-x86_64.zip -d /usr/local bin/protoc
         sudo unzip -o protoc-32.0-linux-x86_64.zip -d /usr/local 'include/*'
-        rm protoc-23.4-linux-x86_64.zip
+        rm protoc-32.0-linux-x86_64.zip
 
     - name: Install Go dependencies
       run: |
