@@ -14,19 +14,17 @@ jobs:
     - uses: actions/setup-go@v5
       with:
         go-version: '1.25'
-    - name: Install protoc v4.23.4
+    - name: Install protoc v6.32.0
       run: |
-        curl -LO https://github.com/protocolbuffers/protobuf/releases/download/v23.4/protoc-23.4-linux-x86_64.zip
-        sudo unzip -o protoc-23.4-linux-x86_64.zip -d /usr/local bin/protoc
-        sudo unzip -o protoc-23.4-linux-x86_64.zip -d /usr/local 'include/*'
+        curl -LO https://github.com/protocolbuffers/protobuf/releases/download/v32.0/protoc-32.0-linux-x86_64.zip
+        sudo unzip -o protoc-32.0-linux-x86_64.zip -d /usr/local bin/protoc
+        sudo unzip -o protoc-32.0-linux-x86_64.zip -d /usr/local 'include/*'
         rm protoc-23.4-linux-x86_64.zip
 
     - name: Install Go dependencies
       run: |
         go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.36.8
         go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
-
-    
 
     - name: Generate protobuf code
       run: make generate
