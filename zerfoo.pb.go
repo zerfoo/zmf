@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.8
 // 	protoc        v6.32.0
-// source: zmf/zerfoo.proto
+// source: zerfoo.proto
 
 package zmf
 
@@ -67,11 +67,11 @@ func (x Tensor_DataType) String() string {
 }
 
 func (Tensor_DataType) Descriptor() protoreflect.EnumDescriptor {
-	return file_zmf_zerfoo_proto_enumTypes[0].Descriptor()
+	return file_zerfoo_proto_enumTypes[0].Descriptor()
 }
 
 func (Tensor_DataType) Type() protoreflect.EnumType {
-	return &file_zmf_zerfoo_proto_enumTypes[0]
+	return &file_zerfoo_proto_enumTypes[0]
 }
 
 func (x Tensor_DataType) Number() protoreflect.EnumNumber {
@@ -80,7 +80,7 @@ func (x Tensor_DataType) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use Tensor_DataType.Descriptor instead.
 func (Tensor_DataType) EnumDescriptor() ([]byte, []int) {
-	return file_zmf_zerfoo_proto_rawDescGZIP(), []int{5, 0}
+	return file_zerfoo_proto_rawDescGZIP(), []int{5, 0}
 }
 
 // Model is the top-level container for a serialized Zerfoo model.
@@ -96,7 +96,7 @@ type Model struct {
 
 func (x *Model) Reset() {
 	*x = Model{}
-	mi := &file_zmf_zerfoo_proto_msgTypes[0]
+	mi := &file_zerfoo_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -108,7 +108,7 @@ func (x *Model) String() string {
 func (*Model) ProtoMessage() {}
 
 func (x *Model) ProtoReflect() protoreflect.Message {
-	mi := &file_zmf_zerfoo_proto_msgTypes[0]
+	mi := &file_zerfoo_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -121,7 +121,7 @@ func (x *Model) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Model.ProtoReflect.Descriptor instead.
 func (*Model) Descriptor() ([]byte, []int) {
-	return file_zmf_zerfoo_proto_rawDescGZIP(), []int{0}
+	return file_zerfoo_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Model) GetGraph() *Graph {
@@ -153,7 +153,7 @@ type Metadata struct {
 
 func (x *Metadata) Reset() {
 	*x = Metadata{}
-	mi := &file_zmf_zerfoo_proto_msgTypes[1]
+	mi := &file_zerfoo_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -165,7 +165,7 @@ func (x *Metadata) String() string {
 func (*Metadata) ProtoMessage() {}
 
 func (x *Metadata) ProtoReflect() protoreflect.Message {
-	mi := &file_zmf_zerfoo_proto_msgTypes[1]
+	mi := &file_zerfoo_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -178,7 +178,7 @@ func (x *Metadata) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Metadata.ProtoReflect.Descriptor instead.
 func (*Metadata) Descriptor() ([]byte, []int) {
-	return file_zmf_zerfoo_proto_rawDescGZIP(), []int{1}
+	return file_zerfoo_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Metadata) GetProducerName() string {
@@ -221,7 +221,7 @@ type Graph struct {
 
 func (x *Graph) Reset() {
 	*x = Graph{}
-	mi := &file_zmf_zerfoo_proto_msgTypes[2]
+	mi := &file_zerfoo_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -233,7 +233,7 @@ func (x *Graph) String() string {
 func (*Graph) ProtoMessage() {}
 
 func (x *Graph) ProtoReflect() protoreflect.Message {
-	mi := &file_zmf_zerfoo_proto_msgTypes[2]
+	mi := &file_zerfoo_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -246,7 +246,7 @@ func (x *Graph) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Graph.ProtoReflect.Descriptor instead.
 func (*Graph) Descriptor() ([]byte, []int) {
-	return file_zmf_zerfoo_proto_rawDescGZIP(), []int{2}
+	return file_zerfoo_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Graph) GetParameters() map[string]*Tensor {
@@ -292,7 +292,7 @@ type ValueInfo struct {
 
 func (x *ValueInfo) Reset() {
 	*x = ValueInfo{}
-	mi := &file_zmf_zerfoo_proto_msgTypes[3]
+	mi := &file_zerfoo_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -304,7 +304,7 @@ func (x *ValueInfo) String() string {
 func (*ValueInfo) ProtoMessage() {}
 
 func (x *ValueInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_zmf_zerfoo_proto_msgTypes[3]
+	mi := &file_zerfoo_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -317,7 +317,7 @@ func (x *ValueInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValueInfo.ProtoReflect.Descriptor instead.
 func (*ValueInfo) Descriptor() ([]byte, []int) {
-	return file_zmf_zerfoo_proto_rawDescGZIP(), []int{3}
+	return file_zerfoo_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ValueInfo) GetName() string {
@@ -363,7 +363,7 @@ type Node struct {
 
 func (x *Node) Reset() {
 	*x = Node{}
-	mi := &file_zmf_zerfoo_proto_msgTypes[4]
+	mi := &file_zerfoo_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -375,7 +375,7 @@ func (x *Node) String() string {
 func (*Node) ProtoMessage() {}
 
 func (x *Node) ProtoReflect() protoreflect.Message {
-	mi := &file_zmf_zerfoo_proto_msgTypes[4]
+	mi := &file_zerfoo_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -388,7 +388,7 @@ func (x *Node) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Node.ProtoReflect.Descriptor instead.
 func (*Node) Descriptor() ([]byte, []int) {
-	return file_zmf_zerfoo_proto_rawDescGZIP(), []int{4}
+	return file_zerfoo_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *Node) GetName() string {
@@ -440,7 +440,7 @@ type Tensor struct {
 
 func (x *Tensor) Reset() {
 	*x = Tensor{}
-	mi := &file_zmf_zerfoo_proto_msgTypes[5]
+	mi := &file_zerfoo_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -452,7 +452,7 @@ func (x *Tensor) String() string {
 func (*Tensor) ProtoMessage() {}
 
 func (x *Tensor) ProtoReflect() protoreflect.Message {
-	mi := &file_zmf_zerfoo_proto_msgTypes[5]
+	mi := &file_zerfoo_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -465,7 +465,7 @@ func (x *Tensor) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Tensor.ProtoReflect.Descriptor instead.
 func (*Tensor) Descriptor() ([]byte, []int) {
-	return file_zmf_zerfoo_proto_rawDescGZIP(), []int{5}
+	return file_zerfoo_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *Tensor) GetDtype() Tensor_DataType {
@@ -507,7 +507,7 @@ type Attribute struct {
 
 func (x *Attribute) Reset() {
 	*x = Attribute{}
-	mi := &file_zmf_zerfoo_proto_msgTypes[6]
+	mi := &file_zerfoo_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -519,7 +519,7 @@ func (x *Attribute) String() string {
 func (*Attribute) ProtoMessage() {}
 
 func (x *Attribute) ProtoReflect() protoreflect.Message {
-	mi := &file_zmf_zerfoo_proto_msgTypes[6]
+	mi := &file_zerfoo_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -532,7 +532,7 @@ func (x *Attribute) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Attribute.ProtoReflect.Descriptor instead.
 func (*Attribute) Descriptor() ([]byte, []int) {
-	return file_zmf_zerfoo_proto_rawDescGZIP(), []int{6}
+	return file_zerfoo_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *Attribute) GetValue() isAttribute_Value {
@@ -646,7 +646,7 @@ type Floats struct {
 
 func (x *Floats) Reset() {
 	*x = Floats{}
-	mi := &file_zmf_zerfoo_proto_msgTypes[7]
+	mi := &file_zerfoo_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -658,7 +658,7 @@ func (x *Floats) String() string {
 func (*Floats) ProtoMessage() {}
 
 func (x *Floats) ProtoReflect() protoreflect.Message {
-	mi := &file_zmf_zerfoo_proto_msgTypes[7]
+	mi := &file_zerfoo_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -671,7 +671,7 @@ func (x *Floats) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Floats.ProtoReflect.Descriptor instead.
 func (*Floats) Descriptor() ([]byte, []int) {
-	return file_zmf_zerfoo_proto_rawDescGZIP(), []int{7}
+	return file_zerfoo_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *Floats) GetVal() []float32 {
@@ -690,7 +690,7 @@ type Ints struct {
 
 func (x *Ints) Reset() {
 	*x = Ints{}
-	mi := &file_zmf_zerfoo_proto_msgTypes[8]
+	mi := &file_zerfoo_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -702,7 +702,7 @@ func (x *Ints) String() string {
 func (*Ints) ProtoMessage() {}
 
 func (x *Ints) ProtoReflect() protoreflect.Message {
-	mi := &file_zmf_zerfoo_proto_msgTypes[8]
+	mi := &file_zerfoo_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -715,7 +715,7 @@ func (x *Ints) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Ints.ProtoReflect.Descriptor instead.
 func (*Ints) Descriptor() ([]byte, []int) {
-	return file_zmf_zerfoo_proto_rawDescGZIP(), []int{8}
+	return file_zerfoo_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *Ints) GetVal() []int64 {
@@ -734,7 +734,7 @@ type Strings struct {
 
 func (x *Strings) Reset() {
 	*x = Strings{}
-	mi := &file_zmf_zerfoo_proto_msgTypes[9]
+	mi := &file_zerfoo_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -746,7 +746,7 @@ func (x *Strings) String() string {
 func (*Strings) ProtoMessage() {}
 
 func (x *Strings) ProtoReflect() protoreflect.Message {
-	mi := &file_zmf_zerfoo_proto_msgTypes[9]
+	mi := &file_zerfoo_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -759,7 +759,7 @@ func (x *Strings) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Strings.ProtoReflect.Descriptor instead.
 func (*Strings) Descriptor() ([]byte, []int) {
-	return file_zmf_zerfoo_proto_rawDescGZIP(), []int{9}
+	return file_zerfoo_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *Strings) GetVal() []string {
@@ -769,11 +769,11 @@ func (x *Strings) GetVal() []string {
 	return nil
 }
 
-var File_zmf_zerfoo_proto protoreflect.FileDescriptor
+var File_zerfoo_proto protoreflect.FileDescriptor
 
-const file_zmf_zerfoo_proto_rawDesc = "" +
+const file_zerfoo_proto_rawDesc = "" +
 	"\n" +
-	"\x10zmf/zerfoo.proto\x12\x03zmf\"T\n" +
+	"\fzerfoo.proto\x12\x03zmf\"T\n" +
 	"\x05Model\x12 \n" +
 	"\x05graph\x18\x01 \x01(\v2\n" +
 	".zmf.GraphR\x05graph\x12)\n" +
@@ -836,20 +836,20 @@ const file_zmf_zerfoo_proto_rawDesc = "" +
 	"\x03val\x18\x01 \x03(\tR\x03valB\x17Z\x15github.com/zerfoo/zmfb\x06proto3"
 
 var (
-	file_zmf_zerfoo_proto_rawDescOnce sync.Once
-	file_zmf_zerfoo_proto_rawDescData []byte
+	file_zerfoo_proto_rawDescOnce sync.Once
+	file_zerfoo_proto_rawDescData []byte
 )
 
-func file_zmf_zerfoo_proto_rawDescGZIP() []byte {
-	file_zmf_zerfoo_proto_rawDescOnce.Do(func() {
-		file_zmf_zerfoo_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_zmf_zerfoo_proto_rawDesc), len(file_zmf_zerfoo_proto_rawDesc)))
+func file_zerfoo_proto_rawDescGZIP() []byte {
+	file_zerfoo_proto_rawDescOnce.Do(func() {
+		file_zerfoo_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_zerfoo_proto_rawDesc), len(file_zerfoo_proto_rawDesc)))
 	})
-	return file_zmf_zerfoo_proto_rawDescData
+	return file_zerfoo_proto_rawDescData
 }
 
-var file_zmf_zerfoo_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_zmf_zerfoo_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
-var file_zmf_zerfoo_proto_goTypes = []any{
+var file_zerfoo_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_zerfoo_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_zerfoo_proto_goTypes = []any{
 	(Tensor_DataType)(0), // 0: zmf.Tensor.DataType
 	(*Model)(nil),        // 1: zmf.Model
 	(*Metadata)(nil),     // 2: zmf.Metadata
@@ -864,7 +864,7 @@ var file_zmf_zerfoo_proto_goTypes = []any{
 	nil,                  // 11: zmf.Graph.ParametersEntry
 	nil,                  // 12: zmf.Node.AttributesEntry
 }
-var file_zmf_zerfoo_proto_depIdxs = []int32{
+var file_zerfoo_proto_depIdxs = []int32{
 	3,  // 0: zmf.Model.graph:type_name -> zmf.Graph
 	2,  // 1: zmf.Model.metadata:type_name -> zmf.Metadata
 	11, // 2: zmf.Graph.parameters:type_name -> zmf.Graph.ParametersEntry
@@ -886,12 +886,12 @@ var file_zmf_zerfoo_proto_depIdxs = []int32{
 	0,  // [0:14] is the sub-list for field type_name
 }
 
-func init() { file_zmf_zerfoo_proto_init() }
-func file_zmf_zerfoo_proto_init() {
-	if File_zmf_zerfoo_proto != nil {
+func init() { file_zerfoo_proto_init() }
+func file_zerfoo_proto_init() {
+	if File_zerfoo_proto != nil {
 		return
 	}
-	file_zmf_zerfoo_proto_msgTypes[6].OneofWrappers = []any{
+	file_zerfoo_proto_msgTypes[6].OneofWrappers = []any{
 		(*Attribute_F)(nil),
 		(*Attribute_I)(nil),
 		(*Attribute_S)(nil),
@@ -903,18 +903,18 @@ func file_zmf_zerfoo_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_zmf_zerfoo_proto_rawDesc), len(file_zmf_zerfoo_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_zerfoo_proto_rawDesc), len(file_zerfoo_proto_rawDesc)),
 			NumEnums:      1,
 			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_zmf_zerfoo_proto_goTypes,
-		DependencyIndexes: file_zmf_zerfoo_proto_depIdxs,
-		EnumInfos:         file_zmf_zerfoo_proto_enumTypes,
-		MessageInfos:      file_zmf_zerfoo_proto_msgTypes,
+		GoTypes:           file_zerfoo_proto_goTypes,
+		DependencyIndexes: file_zerfoo_proto_depIdxs,
+		EnumInfos:         file_zerfoo_proto_enumTypes,
+		MessageInfos:      file_zerfoo_proto_msgTypes,
 	}.Build()
-	File_zmf_zerfoo_proto = out.File
-	file_zmf_zerfoo_proto_goTypes = nil
-	file_zmf_zerfoo_proto_depIdxs = nil
+	File_zerfoo_proto = out.File
+	file_zerfoo_proto_goTypes = nil
+	file_zerfoo_proto_depIdxs = nil
 }
