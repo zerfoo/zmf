@@ -23,22 +23,7 @@ jobs:
         go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.36.8
         go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
 
-    - name: Diagnose protoc and generated code
-      run: |
-        echo "--- protoc version in CI ---"
-        protoc --version
-        echo "--- protoc-gen-go version in CI ---"
-        # Try to find protoc-gen-go and print its version if possible
-        GOPATH=$(go env GOPATH)
-        if [ -f "$GOPATH/bin/protoc-gen-go" ]; then
-          echo "protoc-gen-go found at $GOPATH/bin/protoc-gen-go"
-          "$GOPATH/bin/protoc-gen-go" --version || echo "Could not get protoc-gen-go version via --version"
-        else
-          echo "protoc-gen-go not found in $GOPATH/bin"
-        fi
-        echo "--- Diff before make generate in CI (should be empty) ---"
-        git diff zerfoo.pb.go
-        echo "--- End of pre-generate diagnostics ---"
+    
 
     - name: Generate protobuf code
       run: make generate
