@@ -18,13 +18,16 @@ jobs:
       with:
         protoc-version: '6.32.0'
 
-    - name: Diagnose Protoc and Go Environment
+    - name: Install Go dependencies
       run: |
-        echo "--- Protoc Version ---"
+        go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.36.8
+        go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
+
+    - name: Diagnose protoc and generated code
+      run: |
+        echo "--- protoc version in CI ---"
         protoc --version
-        echo "--- Go Environment ---"
-        go env
-        echo "--- protoc-gen-go location and version ---"
+        echo "--- protoc-gen-go version in CI ---"
         # Try to find protoc-gen-go and print its version if possible
         GOPATH=$(go env GOPATH)
         if [ -f "$GOPATH/bin/protoc-gen-go" ]; then
@@ -33,38 +36,18 @@ jobs:
         else
           echo "protoc-gen-go not found in $GOPATH/bin"
         fi
-        echo "--- zerfoo.pb.go details ---"
-        ls -l zerfoo.pb.go
+        echo "--- Diff before make generate in CI (should be empty) ---"
+        git diff zerfoo.pb.go
+        echo "--- End of pre-generate diagnostics ---"
 
-    - name: Install Go dependencies
-      run: |
-        go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.36.8
-        go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
-    - name: Diagnose Protoc and Go Environment
-      run: |
-        echo "--- protoc version ---"
-        protoc --version
-        echo "--- protoc-gen-go path ---"
-        which protoc-gen-go
-        echo "--- go env ---"
-        go env
     - name: Generate protobuf code
       run: make generate
 
-    - name: Diagnose protoc and generated code
-      run: |
-        echo "--- protoc version in CI ---"
-        protoc --version
-        echo "--- protoc-gen-go version in CI ---"
-        # This might not work directly, but worth a try
-        protoc-gen-go --version || echo "protoc-gen-go --version failed, trying go list"
-        go list -m google.golang.org/protobuf/cmd/protoc-gen-go
-        echo "--- Diff after make generate in CI ---"
-        git diff zerfoo.pb.go
-        echo "--- End of diagnostics ---"
-
     - name: Verify generated code is up-to-date
       run: |
+        echo "--- Diff after make generate in CI (should be empty for success) ---"
+        git diff zerfoo.pb.go
+        echo "--- End of post-generate diagnostics ---"
         if ! git diff --exit-code; then
           echo "Generated code is not up-to-date. Please run 'make generate' and commit the changes."
           exit 1
