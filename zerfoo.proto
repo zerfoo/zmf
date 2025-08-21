@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package format;
+package zmf;
 
 option go_package = "github.com/zerfoo/zmf";
 
