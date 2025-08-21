@@ -283,7 +283,7 @@ type ValueInfo struct {
 	// The name of the tensor.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The data type of the tensor.
-	Dtype Tensor_DataType `protobuf:"varint,2,opt,name=dtype,proto3,enum=format.Tensor_DataType" json:"dtype,omitempty"`
+	Dtype Tensor_DataType `protobuf:"varint,2,opt,name=dtype,proto3,enum=zmf.Tensor_DataType" json:"dtype,omitempty"`
 	// The shape of the tensor. A value of -1 can be used for dynamic dimensions.
 	Shape         []int64 `protobuf:"varint,3,rep,packed,name=shape,proto3" json:"shape,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -429,7 +429,7 @@ func (x *Node) GetAttributes() map[string]*Attribute {
 // Tensor represents a multi-dimensional array of data (e.g., a weight matrix).
 type Tensor struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	Dtype Tensor_DataType        `protobuf:"varint,1,opt,name=dtype,proto3,enum=format.Tensor_DataType" json:"dtype,omitempty"`
+	Dtype Tensor_DataType        `protobuf:"varint,1,opt,name=dtype,proto3,enum=zmf.Tensor_DataType" json:"dtype,omitempty"`
 	// The shape (dimensions) of the tensor.
 	Shape []int64 `protobuf:"varint,2,rep,packed,name=shape,proto3" json:"shape,omitempty"`
 	// The raw tensor data, stored as bytes.
@@ -773,41 +773,42 @@ var File_zerfoo_proto protoreflect.FileDescriptor
 
 const file_zerfoo_proto_rawDesc = "" +
 	"\n" +
-	"\fzerfoo.proto\x12\x06format\"Z\n" +
-	"\x05Model\x12#\n" +
-	"\x05graph\x18\x01 \x01(\v2\r.format.GraphR\x05graph\x12,\n" +
-	"\bmetadata\x18\x02 \x01(\v2\x10.format.MetadataR\bmetadata\"\x7f\n" +
+	"\fzerfoo.proto\x12\x03zmf\"T\n" +
+	"\x05Model\x12 \n" +
+	"\x05graph\x18\x01 \x01(\v2\n" +
+	".zmf.GraphR\x05graph\x12)\n" +
+	"\bmetadata\x18\x02 \x01(\v2\r.zmf.MetadataR\bmetadata\"\x7f\n" +
 	"\bMetadata\x12#\n" +
 	"\rproducer_name\x18\x01 \x01(\tR\fproducerName\x12)\n" +
 	"\x10producer_version\x18\x02 \x01(\tR\x0fproducerVersion\x12#\n" +
-	"\ropset_version\x18\x03 \x01(\x03R\fopsetVersion\"\x91\x02\n" +
-	"\x05Graph\x12=\n" +
+	"\ropset_version\x18\x03 \x01(\x03R\fopsetVersion\"\x82\x02\n" +
+	"\x05Graph\x12:\n" +
 	"\n" +
-	"parameters\x18\x01 \x03(\v2\x1d.format.Graph.ParametersEntryR\n" +
-	"parameters\x12\"\n" +
-	"\x05nodes\x18\x02 \x03(\v2\f.format.NodeR\x05nodes\x12)\n" +
-	"\x06inputs\x18\x03 \x03(\v2\x11.format.ValueInfoR\x06inputs\x12+\n" +
-	"\aoutputs\x18\x04 \x03(\v2\x11.format.ValueInfoR\aoutputs\x1aM\n" +
+	"parameters\x18\x01 \x03(\v2\x1a.zmf.Graph.ParametersEntryR\n" +
+	"parameters\x12\x1f\n" +
+	"\x05nodes\x18\x02 \x03(\v2\t.zmf.NodeR\x05nodes\x12&\n" +
+	"\x06inputs\x18\x03 \x03(\v2\x0e.zmf.ValueInfoR\x06inputs\x12(\n" +
+	"\aoutputs\x18\x04 \x03(\v2\x0e.zmf.ValueInfoR\aoutputs\x1aJ\n" +
 	"\x0fParametersEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12$\n" +
-	"\x05value\x18\x02 \x01(\v2\x0e.format.TensorR\x05value:\x028\x01\"d\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12!\n" +
+	"\x05value\x18\x02 \x01(\v2\v.zmf.TensorR\x05value:\x028\x01\"a\n" +
 	"\tValueInfo\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\x12-\n" +
-	"\x05dtype\x18\x02 \x01(\x0e2\x17.format.Tensor.DataTypeR\x05dtype\x12\x14\n" +
-	"\x05shape\x18\x03 \x03(\x03R\x05shape\"\xf5\x01\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12*\n" +
+	"\x05dtype\x18\x02 \x01(\x0e2\x14.zmf.Tensor.DataTypeR\x05dtype\x12\x14\n" +
+	"\x05shape\x18\x03 \x03(\x03R\x05shape\"\xef\x01\n" +
 	"\x04Node\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x17\n" +
 	"\aop_type\x18\x02 \x01(\tR\x06opType\x12\x16\n" +
 	"\x06inputs\x18\x03 \x03(\tR\x06inputs\x12\x18\n" +
-	"\aoutputs\x18\x04 \x03(\tR\aoutputs\x12<\n" +
+	"\aoutputs\x18\x04 \x03(\tR\aoutputs\x129\n" +
 	"\n" +
-	"attributes\x18\x05 \x03(\v2\x1c.format.Node.AttributesEntryR\n" +
-	"attributes\x1aP\n" +
+	"attributes\x18\x05 \x03(\v2\x19.zmf.Node.AttributesEntryR\n" +
+	"attributes\x1aM\n" +
 	"\x0fAttributesEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12'\n" +
-	"\x05value\x18\x02 \x01(\v2\x11.format.AttributeR\x05value:\x028\x01\"\xc4\x01\n" +
-	"\x06Tensor\x12-\n" +
-	"\x05dtype\x18\x01 \x01(\x0e2\x17.format.Tensor.DataTypeR\x05dtype\x12\x14\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12$\n" +
+	"\x05value\x18\x02 \x01(\v2\x0e.zmf.AttributeR\x05value:\x028\x01\"\xc1\x01\n" +
+	"\x06Tensor\x12*\n" +
+	"\x05dtype\x18\x01 \x01(\x0e2\x14.zmf.Tensor.DataTypeR\x05dtype\x12\x14\n" +
 	"\x05shape\x18\x02 \x03(\x03R\x05shape\x12\x12\n" +
 	"\x04data\x18\x03 \x01(\fR\x04data\"a\n" +
 	"\bDataType\x12\v\n" +
@@ -818,14 +819,14 @@ const file_zerfoo_proto_rawDesc = "" +
 	"\x06FLOAT8\x10\x03\x12\t\n" +
 	"\x05INT32\x10\x04\x12\t\n" +
 	"\x05INT64\x10\x05\x12\v\n" +
-	"\aFLOAT64\x10\x06\"\xbf\x01\n" +
+	"\aFLOAT64\x10\x06\"\xb6\x01\n" +
 	"\tAttribute\x12\x0e\n" +
 	"\x01f\x18\x01 \x01(\x02H\x00R\x01f\x12\x0e\n" +
 	"\x01i\x18\x02 \x01(\x03H\x00R\x01i\x12\x0e\n" +
-	"\x01s\x18\x03 \x01(\tH\x00R\x01s\x12(\n" +
-	"\x06floats\x18\x04 \x01(\v2\x0e.format.FloatsH\x00R\x06floats\x12\"\n" +
-	"\x04ints\x18\x05 \x01(\v2\f.format.IntsH\x00R\x04ints\x12+\n" +
-	"\astrings\x18\x06 \x01(\v2\x0f.format.StringsH\x00R\astringsB\a\n" +
+	"\x01s\x18\x03 \x01(\tH\x00R\x01s\x12%\n" +
+	"\x06floats\x18\x04 \x01(\v2\v.zmf.FloatsH\x00R\x06floats\x12\x1f\n" +
+	"\x04ints\x18\x05 \x01(\v2\t.zmf.IntsH\x00R\x04ints\x12(\n" +
+	"\astrings\x18\x06 \x01(\v2\f.zmf.StringsH\x00R\astringsB\a\n" +
 	"\x05value\"\x1a\n" +
 	"\x06Floats\x12\x10\n" +
 	"\x03val\x18\x01 \x03(\x02R\x03val\"\x18\n" +
@@ -849,35 +850,35 @@ func file_zerfoo_proto_rawDescGZIP() []byte {
 var file_zerfoo_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_zerfoo_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_zerfoo_proto_goTypes = []any{
-	(Tensor_DataType)(0), // 0: format.Tensor.DataType
-	(*Model)(nil),        // 1: format.Model
-	(*Metadata)(nil),     // 2: format.Metadata
-	(*Graph)(nil),        // 3: format.Graph
-	(*ValueInfo)(nil),    // 4: format.ValueInfo
-	(*Node)(nil),         // 5: format.Node
-	(*Tensor)(nil),       // 6: format.Tensor
-	(*Attribute)(nil),    // 7: format.Attribute
-	(*Floats)(nil),       // 8: format.Floats
-	(*Ints)(nil),         // 9: format.Ints
-	(*Strings)(nil),      // 10: format.Strings
-	nil,                  // 11: format.Graph.ParametersEntry
-	nil,                  // 12: format.Node.AttributesEntry
+	(Tensor_DataType)(0), // 0: zmf.Tensor.DataType
+	(*Model)(nil),        // 1: zmf.Model
+	(*Metadata)(nil),     // 2: zmf.Metadata
+	(*Graph)(nil),        // 3: zmf.Graph
+	(*ValueInfo)(nil),    // 4: zmf.ValueInfo
+	(*Node)(nil),         // 5: zmf.Node
+	(*Tensor)(nil),       // 6: zmf.Tensor
+	(*Attribute)(nil),    // 7: zmf.Attribute
+	(*Floats)(nil),       // 8: zmf.Floats
+	(*Ints)(nil),         // 9: zmf.Ints
+	(*Strings)(nil),      // 10: zmf.Strings
+	nil,                  // 11: zmf.Graph.ParametersEntry
+	nil,                  // 12: zmf.Node.AttributesEntry
 }
 var file_zerfoo_proto_depIdxs = []int32{
-	3,  // 0: format.Model.graph:type_name -> format.Graph
-	2,  // 1: format.Model.metadata:type_name -> format.Metadata
-	11, // 2: format.Graph.parameters:type_name -> format.Graph.ParametersEntry
-	5,  // 3: format.Graph.nodes:type_name -> format.Node
-	4,  // 4: format.Graph.inputs:type_name -> format.ValueInfo
-	4,  // 5: format.Graph.outputs:type_name -> format.ValueInfo
-	0,  // 6: format.ValueInfo.dtype:type_name -> format.Tensor.DataType
-	12, // 7: format.Node.attributes:type_name -> format.Node.AttributesEntry
-	0,  // 8: format.Tensor.dtype:type_name -> format.Tensor.DataType
-	8,  // 9: format.Attribute.floats:type_name -> format.Floats
-	9,  // 10: format.Attribute.ints:type_name -> format.Ints
-	10, // 11: format.Attribute.strings:type_name -> format.Strings
-	6,  // 12: format.Graph.ParametersEntry.value:type_name -> format.Tensor
-	7,  // 13: format.Node.AttributesEntry.value:type_name -> format.Attribute
+	3,  // 0: zmf.Model.graph:type_name -> zmf.Graph
+	2,  // 1: zmf.Model.metadata:type_name -> zmf.Metadata
+	11, // 2: zmf.Graph.parameters:type_name -> zmf.Graph.ParametersEntry
+	5,  // 3: zmf.Graph.nodes:type_name -> zmf.Node
+	4,  // 4: zmf.Graph.inputs:type_name -> zmf.ValueInfo
+	4,  // 5: zmf.Graph.outputs:type_name -> zmf.ValueInfo
+	0,  // 6: zmf.ValueInfo.dtype:type_name -> zmf.Tensor.DataType
+	12, // 7: zmf.Node.attributes:type_name -> zmf.Node.AttributesEntry
+	0,  // 8: zmf.Tensor.dtype:type_name -> zmf.Tensor.DataType
+	8,  // 9: zmf.Attribute.floats:type_name -> zmf.Floats
+	9,  // 10: zmf.Attribute.ints:type_name -> zmf.Ints
+	10, // 11: zmf.Attribute.strings:type_name -> zmf.Strings
+	6,  // 12: zmf.Graph.ParametersEntry.value:type_name -> zmf.Tensor
+	7,  // 13: zmf.Node.AttributesEntry.value:type_name -> zmf.Attribute
 	14, // [14:14] is the sub-list for method output_type
 	14, // [14:14] is the sub-list for method input_type
 	14, // [14:14] is the sub-list for extension type_name
