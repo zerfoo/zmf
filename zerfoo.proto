@@ -4,117 +4,156 @@ package zmf;
 
 option go_package = "github.com/zerfoo/zmf";
 
-// Model is the top-level container for a serialized Zerfoo model.
-message Model {
-    // The computation graph defining the model's architecture.
-    Graph graph = 1;
-
-    // Metadata about the model, such as its producer.
-    Metadata metadata = 2;
+// Attribute represents a named, non-tensor parameter for a node.
+message Attribute {
+  oneof value {
+    float f = 1;
+    int64 i = 2;
+    string s = 3;
+    Floats floats = 4;
+    Ints ints = 5;
+    Strings strings = 6;
+    bool b = 7; // Added boolean support
+  }
 }
 
-// Metadata stores information about the model's origin and versioning.
-message Metadata {
-    // The name of the tool or framework that produced this model.
-    string producer_name = 1;
-
-    // The version of the producer.
-    string producer_version = 2;
-
-    // The version of the ZMF operator set this model conforms to.
-    int64 opset_version = 3;
+// Floats is a wrapper for repeated float values in attributes.
+message Floats {
+  repeated float val = 1;
 }
 
 // Graph represents the computation graph of the model.
 message Graph {
-    // A map of all trainable parameters (weights, biases) in the model.
-    // The key is a unique name for the parameter, e.g., "layers.0.attention.wq.weight".
-    map<string, Tensor> parameters = 1;
+  // A map of all trainable parameters (weights, biases) in the model.
+  // The key is a unique name for the parameter, e.g., "layers.0.attention.wq.weight".
+  map<string, Tensor> parameters = 1;
 
-    // A list of all nodes (layers or operations) in the graph.
-    // For sequential models, this list should be in execution order.
-    repeated Node nodes = 2;
+  // A list of all nodes (layers or operations) in the graph.
+  // For sequential models, this list should be in execution order.
+  repeated Node nodes = 2;
 
-    // A list describing the input tensors to the graph.
-    repeated ValueInfo inputs = 3;
+  // A list describing the input tensors to the graph.
+  repeated ValueInfo inputs = 3;
 
-    // A list describing the output tensors of the graph.
-    repeated ValueInfo outputs = 4;
+  // A list describing the output tensors of the graph.
+  repeated ValueInfo outputs = 4;
 }
 
-// ValueInfo describes a tensor, including its name, type, and shape.
-message ValueInfo {
-    // The name of the tensor.
-    string name = 1;
+// Ints is a wrapper for repeated int64 values in attributes.
+message Ints {
+  repeated int64 val = 1;
+}
 
-    // The data type of the tensor.
-    Tensor.DataType dtype = 2;
+// Metadata stores information about the model's origin and versioning.
+message Metadata {
+  // The name of the tool or framework that produced this model.
+  string producer_name = 1;
 
-    // The shape of the tensor. A value of -1 can be used for dynamic dimensions.
-    repeated int64 shape = 3;
+  // The version of the producer.
+  string producer_version = 2;
+
+  // The version of the ZMF operator set this model conforms to.
+  int64 opset_version = 3;
+}
+
+// Model is the top-level container for a serialized Zerfoo model.
+message Model {
+  // The computation graph defining the model's architecture.
+  Graph graph = 1;
+
+  // Metadata about the model, such as its producer.
+  Metadata metadata = 2;
+
+  // Version of the ZMF format itself.
+  string zmf_version = 3;
 }
 
 // Node represents a single layer or operation in the computation graph.
 message Node {
-    // A unique name for this node, e.g., "transformer_block_0".
-    string name = 1;
+  // A unique name for this node, e.g., "transformer_block_0".
+  string name = 1;
 
-    // The type of operation this node performs, e.g., "RMSNorm", "GlobalAttention".
-    // This must map to a registered constructor in the importer.
-    string op_type = 2;
+  // The type of operation this node performs, e.g., "RMSNorm", "GlobalAttention".
+  // This must map to a registered constructor in the importer.
+  string op_type = 2;
 
-    // A list of names of the tensors that are inputs to this node.
-    // These can be names of parameters or outputs of other nodes.
-    repeated string inputs = 3;
+  // A list of names of the tensors that are inputs to this node.
+  // These can be names of parameters or outputs of other nodes.
+  repeated string inputs = 3;
 
-    // A list of names for the output tensors of this node.
-    repeated string outputs = 4;
+  // A list of names for the output tensors of this node.
+  repeated string outputs = 4;
 
-    // A map of attributes for this node, for values that are not tensors.
-    // e.g., "epsilon" for RMSNorm, "hidden_dim" for FFN.
-    map<string, Attribute> attributes = 5;
+  // A map of attributes for this node, for values that are not tensors.
+  // e.g., "epsilon" for RMSNorm, "hidden_dim" for FFN.
+  map<string, Attribute> attributes = 5;
+
+  // Common attributes for explicitness
+  optional float epsilon = 6; // Used in normalization layers
+  repeated int64 perm = 7; // Used in transpose operations
+  optional int64 axis = 8; // Used in reduction operations
+}
+
+// Quantization describes the parameters for affine quantization.
+message Quantization {
+  // The scale factor for quantization.
+  float scale = 1;
+
+  // The zero point for quantization.
+  int64 zero_point = 2;
+
+  // The minimum value of the quantized range.
+  optional int64 q_min = 3;
+
+  // The maximum value of the quantized range.
+  optional int64 q_max = 4;
+}
+
+// Strings is a wrapper for repeated string values in attributes.
+message Strings {
+  repeated string val = 1;
 }
 
 // Tensor represents a multi-dimensional array of data (e.g., a weight matrix).
 message Tensor {
-    // The data type of the tensor elements.
-    enum DataType {
-        FLOAT32 = 0;
-        FLOAT16 = 1;
-        BFLOAT16 = 2;
-        FLOAT8 = 3;
-        INT32 = 4;
-        INT64 = 5;
-        FLOAT64 = 6;
-    }
-    DataType dtype = 1;
+  // The data type of the tensor elements.
+  enum DataType {
+    BFLOAT16 = 0;
+    BOOL = 1;
+    FLOAT16 = 2;
+    FLOAT32 = 3;
+    FLOAT64 = 4;
+    FLOAT8 = 5;
+    INT16 = 6;
+    INT32 = 7;
+    INT64 = 8;
+    INT8 = 9;
+    STRING = 10;
+    UINT32 = 11;
+    UINT64 = 12;
+    UINT8 = 13;
+  }
 
-    // The shape (dimensions) of the tensor.
-    repeated int64 shape = 2;
+  DataType dtype = 1;
 
-    // The raw tensor data, stored as bytes.
-    bytes data = 3;
+  // The shape (dimensions) of the tensor.
+  repeated int64 shape = 2;
+
+  // The raw tensor data, stored as bytes.
+  bytes data = 3;
+
+  // Optional quantization parameters for the tensor.
+  optional Quantization quant = 4;
 }
 
-// Attribute represents a named, non-tensor parameter for a node.
-message Attribute {
-    oneof value {
-        float f = 1;
-        int64 i = 2;
-        string s = 3;
-        Floats floats = 4;
-        Ints ints = 5;
-        Strings strings = 6;
-    }
-}
+// ValueInfo describes a tensor, including its name, type, and shape.
+message ValueInfo {
+  // The name of the tensor.
+  string name = 1;
 
-// Wrapper messages for repeated primitive types in attributes.
-message Floats {
-    repeated float val = 1;
-}
-message Ints {
-    repeated int64 val = 1;
-}
-message Strings {
-    repeated string val = 1;
+  // The data type of the tensor.
+  Tensor.DataType dtype = 2;
+
+  // The shape of the tensor. A value of -1 can be used for dynamic dimensions.
+  repeated int64 shape = 3;
 }
