@@ -4,7 +4,7 @@ package zmf;
 
 option go_package = "github.com/zerfoo/zmf";
 
-// Attribute represents a named, non-tensor parameter for a node.
+// Attribute represents a named parameter for a node.
 message Attribute {
   oneof value {
     float f = 1;
@@ -14,6 +14,7 @@ message Attribute {
     Ints ints = 5;
     Strings strings = 6;
     bool b = 7; // Added boolean support
+    Tensor tensor = 8; // Added tensor support for constants
   }
 }
 
