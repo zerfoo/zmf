@@ -133,6 +133,8 @@ message Tensor {
     UINT32 = 11;
     UINT64 = 12;
     UINT8 = 13;
+    Q4_0 = 14;
+    Q8_0 = 15;
   }
 
   DataType dtype = 1;

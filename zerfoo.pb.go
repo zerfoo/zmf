@@ -39,6 +39,8 @@ const (
 	Tensor_UINT32   Tensor_DataType = 11
 	Tensor_UINT64   Tensor_DataType = 12
 	Tensor_UINT8    Tensor_DataType = 13
+	Tensor_Q4_0     Tensor_DataType = 14
+	Tensor_Q8_0     Tensor_DataType = 15
 )
 
 // Enum value maps for Tensor_DataType.
@@ -58,6 +60,8 @@ var (
 		11: "UINT32",
 		12: "UINT64",
 		13: "UINT8",
+		14: "Q4_0",
+		15: "Q8_0",
 	}
 	Tensor_DataType_value = map[string]int32{
 		"BFLOAT16": 0,
@@ -74,6 +78,8 @@ var (
 		"UINT32":   11,
 		"UINT64":   12,
 		"UINT8":    13,
+		"Q4_0":     14,
+		"Q8_0":     15,
 	}
 )
 
@@ -1005,12 +1011,12 @@ const file_zerfoo_proto_rawDesc = "" +
 	"\x06_q_minB\b\n" +
 	"\x06_q_max\"\x1b\n" +
 	"\aStrings\x12\x10\n" +
-	"\x03val\x18\x01 \x03(\tR\x03val\"\xc8\x02\n" +
+	"\x03val\x18\x01 \x03(\tR\x03val\"\xdc\x02\n" +
 	"\x06Tensor\x12*\n" +
 	"\x05dtype\x18\x01 \x01(\x0e2\x14.zmf.Tensor.DataTypeR\x05dtype\x12\x14\n" +
 	"\x05shape\x18\x02 \x03(\x03R\x05shape\x12\x12\n" +
 	"\x04data\x18\x03 \x01(\fR\x04data\x12,\n" +
-	"\x05quant\x18\x04 \x01(\v2\x11.zmf.QuantizationH\x00R\x05quant\x88\x01\x01\"\xaf\x01\n" +
+	"\x05quant\x18\x04 \x01(\v2\x11.zmf.QuantizationH\x00R\x05quant\x88\x01\x01\"\xc3\x01\n" +
 	"\bDataType\x12\f\n" +
 	"\bBFLOAT16\x10\x00\x12\b\n" +
 	"\x04BOOL\x10\x01\x12\v\n" +
@@ -1030,7 +1036,9 @@ const file_zerfoo_proto_rawDesc = "" +
 	"\x06UINT32\x10\v\x12\n" +
 	"\n" +
 	"\x06UINT64\x10\f\x12\t\n" +
-	"\x05UINT8\x10\rB\b\n" +
+	"\x05UINT8\x10\r\x12\b\n" +
+	"\x04Q4_0\x10\x0e\x12\b\n" +
+	"\x04Q8_0\x10\x0fB\b\n" +
 	"\x06_quant\"a\n" +
 	"\tValueInfo\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12*\n" +
