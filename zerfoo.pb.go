@@ -39,6 +39,8 @@ const (
 	Tensor_UINT32   Tensor_DataType = 11
 	Tensor_UINT64   Tensor_DataType = 12
 	Tensor_UINT8    Tensor_DataType = 13
+	Tensor_Q4_0     Tensor_DataType = 14
+	Tensor_Q8_0     Tensor_DataType = 15
 )
 
 // Enum value maps for Tensor_DataType.
@@ -58,6 +60,8 @@ var (
 		11: "UINT32",
 		12: "UINT64",
 		13: "UINT8",
+		14: "Q4_0",
+		15: "Q8_0",
 	}
 	Tensor_DataType_value = map[string]int32{
 		"BFLOAT16": 0,
@@ -74,6 +78,8 @@ var (
 		"UINT32":   11,
 		"UINT64":   12,
 		"UINT8":    13,
+		"Q4_0":     14,
+		"Q8_0":     15,
 	}
 )
 
