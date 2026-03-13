@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/zerfoo/zmf/compare/v0.3.0...v0.4.0) (2026-03-13)
+
+
+### Features
+
+* re-release with quantization types ([494eccd](https://github.com/zerfoo/zmf/commit/494eccddb095beaf183d58f4e3d0a9807e84d23e))
+
 ## [0.3.0](https://github.com/zerfoo/zmf/compare/v0.2.0...v0.3.0) (2026-03-13)
 
 
