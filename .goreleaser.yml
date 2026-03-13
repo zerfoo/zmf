@@ -1,0 +1,34 @@
+version: 2
+
+builds:
+  - skip: true
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^chore\\(deps\\):"
+  groups:
+    - title: "Breaking Changes"
+      regexp: '^.*?!:.+$'
+      order: 0
+    - title: "Features"
+      regexp: '^feat.*'
+      order: 1
+    - title: "Bug Fixes"
+      regexp: '^fix.*'
+      order: 2
+    - title: "Performance"
+      regexp: '^perf.*'
+      order: 3
+    - title: "Other"
+      order: 999
+
+release:
+  github:
+    owner: zerfoo
+    name: zmf
+  prerelease: auto
+  make_latest: true
