@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/zerfoo/zmf/compare/v0.5.0...v0.6.0) (2026-03-16)
+
+
+### Features
+
+* add Q4_0 and Q8_0 DataType enum values ([5ef33c4](https://github.com/zerfoo/zmf/commit/5ef33c418199280c736b1446c9ad3c4c2cf8dc5b))
+
 ## [0.5.0](https://github.com/zerfoo/zmf/compare/v0.4.0...v0.5.0) (2026-03-13)
 
 
